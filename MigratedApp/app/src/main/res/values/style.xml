@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <!--    Rounded Image View  -->
+    <style name="roundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8%</item>
+    </style>
+
+    <!-- textual styles (for different sized headings) -->
+    <style name="appDevTitleStyleBold" parent="">
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/sfprodisplay_bold</item>
+        <item name="android:textColor">?attr/headingColor</item>
+    </style>
+
+    <style name="appDevTitleStyleLight" parent="">
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/sfprodisplay_light</item>
+        <item name="android:textColor">?attr/headingColor</item>
+    </style>
+
+    <!-- profile page -->
+    <style name="profilePageSettingsLabel" parent="">
+        <item name="android:textSize">17sp</item>
+        <item name="android:fontFamily">@font/sfprodisplay_medium</item>
+        <item name="android:textColor">?attr/subTitleColor</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+
+
+    </style>
+
+    <style name="profilePageSettingsDetail" parent="">
+        <item name="android:textSize">17sp</item>
+        <item name="android:fontFamily">@font/sfprodisplay_medium</item>
+        <item name="android:textColor">?attr/descriptionColor</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+
+    </style>
+
+    <style name="textAppearanceWarn" parent="">
+        <item name="android:textColor">#C84238</item>
+    </style>
+
+    <style name="textAppearanceHighlight" parent="">
+        <item name="android:textColor">#327DEF</item>
+    </style>
+
+    <!-- About us page -->
+    <style name="aboutUsPageCards" parent="">
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">@dimen/horizontalMainPadding</item>
+        <item name="android:elevation">@dimen/shadowElevation</item>
+        <item name="cardCornerRadius">@dimen/cardCornerRadius</item>
+    </style>
+
+    <style name="aboutUsPageCardsHeader" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/sfprodisplay_bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingVertical" tools:targetApi="o">@dimen/verticalMainPadding</item>
+        <item name="android:textColor">?attr/titleColor</item>
+        <item name="android:textSize">24sp</item>
+
+    </style>
+
+    <style name="aboutUsPageCardsBody" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/sfprodisplay_medium</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingBottom">@dimen/verticalMainPadding</item>
+        <item name="android:textColor">?attr/titleColor</item>
+        <item name="android:textColorLink">?attr/linkColor</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+</resources>
