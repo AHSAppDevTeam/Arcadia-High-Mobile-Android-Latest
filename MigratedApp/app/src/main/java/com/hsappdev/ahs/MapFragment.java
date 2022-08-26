@@ -44,7 +44,7 @@ public class MapFragment extends Fragment {
             }
         });
 
-        webView.loadUrl("https://map.ahs.app/map?quality=0&password=");
+        webView.loadUrl("https://map.ahs.app/map?quality=3&password="+getResources().getString(R.string.map_secret));
 
 
 

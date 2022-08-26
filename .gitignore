@@ -28,3 +28,4 @@ google-services.json
 
 # Android Profiling
 *.hprof
+MigratedApp/app/src/main/res/values/secrets.xml
