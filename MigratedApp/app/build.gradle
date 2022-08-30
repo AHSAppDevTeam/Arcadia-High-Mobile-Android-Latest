@@ -10,6 +10,15 @@ plugins {
 android {
     compileSdk 32
 
+    signingConfigs {
+        release {
+            storeFile "${System.properties['user.home']}${File.separator}ahs-app-dev-team${File.separator}release.keystore" as File
+            storePassword '180Campus'
+            keyPassword '180Campus'
+            keyAlias 'ahs'
+        }
+    }
+
     defaultConfig {
         applicationId "com.hsappdev.ahs"
         minSdk 24
@@ -24,6 +33,7 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
 
         debug {
