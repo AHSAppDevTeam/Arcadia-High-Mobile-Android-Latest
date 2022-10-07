@@ -23,17 +23,18 @@
     </style>
 
     <!-- profile page -->
+    <style name="profilePageSettingsContainer" parent="">
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+    </style>
+
     <style name="profilePageSettingsLabel" parent="">
         <item name="android:textSize">17sp</item>
         <item name="android:fontFamily">@font/sfprodisplay_medium</item>
         <item name="android:textColor">?attr/subTitleColor</item>
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
-        <item name="android:foreground">?attr/selectableItemBackground</item>
-        <item name="android:focusable">true</item>
-        <item name="android:clickable">true</item>
-
-
     </style>
 
     <style name="profilePageSettingsDetail" parent="">
@@ -65,7 +66,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/sfprodisplay_bold</item>
         <item name="android:gravity">center</item>
-        <item name="android:paddingVertical" tools:targetApi="o">@dimen/verticalMainPadding</item>
+        <item name="android:paddingTop">@dimen/verticalMainPadding</item>
+        <item name="android:paddingBottom">@dimen/verticalMainPadding</item>
         <item name="android:textColor">?attr/titleColor</item>
         <item name="android:textSize">24sp</item>
 

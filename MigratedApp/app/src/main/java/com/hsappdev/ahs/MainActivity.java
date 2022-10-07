@@ -17,6 +17,7 @@ import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.FirebaseApp;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         initializeFirebase();
 
         setContentView(R.layout.activity_main);
+
 
 
         boardsViewModel = new ViewModelProvider(this).get(BoardsViewModel.class);

@@ -12,7 +12,7 @@ android {
 
     signingConfigs {
         release {
-            storeFile "${System.properties['user.home']}${File.separator}ahs-app-dev-team${File.separator}release.keystore" as File
+            storeFile "${System.properties['user.home']}${File.separator}app-dev-team${File.separator}release.keystore" as File
             storePassword '180Campus'
             keyPassword '180Campus'
             keyAlias 'ahs'

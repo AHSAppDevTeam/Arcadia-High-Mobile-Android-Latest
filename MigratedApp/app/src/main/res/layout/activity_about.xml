@@ -17,6 +17,9 @@
 
         <ImageButton
             android:id="@+id/backNavigateButton"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="backNavigate"
             android:layout_width="@dimen/cornerIconSize"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/headerPadding"
@@ -42,7 +45,7 @@
         android:id="@+id/about_us_gradient"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/profile_card_gradient_background"
+        android:background="@drawable/about_us_bg_animated_gradient_animator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/terms_header">
 

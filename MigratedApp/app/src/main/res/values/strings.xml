@@ -39,6 +39,9 @@
     <string name="db_schedule_timestamps">timestamps</string>
     <string name="db_schedule_period_id">periodIDs</string>
 
+    <!-- db stuff (credits) -->
+    <string name="db_credits">credits</string>
+
 
     <!-- navbar titles -->
     <string name="homeNavbarTitle">Home</string>

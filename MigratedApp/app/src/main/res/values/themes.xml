@@ -17,6 +17,7 @@
         <item name="titleColor">@color/black</item>
         <item name="subTitleColor">@color/black</item>
         <item name="descriptionColor">#ADADAD</item>
+        <item name="linkColor">@color/link_color</item>
 
     </style>
 </resources>

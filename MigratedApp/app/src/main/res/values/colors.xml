@@ -15,11 +15,20 @@
     <color name="gray">#7F9E9E9E</color>
     <color name="lightgray">#c4c4c4</color>
 
+    <!-- textual colors -->
+    <color name="link_color">#0019d6</color>
+
     <!-- signature app colors -->
     <color name="brickRed">#C84238</color>
 
     <!-- schedule colors -->
     <color name="schedule_bright_blue">#30B0C7</color>
     <color name="schedule_bright_yellow">#FFB100</color>
+
+    <!--    about us gradient -->
+    <color name="aboutUsGradientStart">#FF1D3E</color>
+    <color name="aboutUsGradientCenter">#0084FC</color>
+    <color name="aboutUsGradientEnd">#FF43A6</color>
+    <color name="green_checkmark">#4CAF50</color>
 
 </resources>

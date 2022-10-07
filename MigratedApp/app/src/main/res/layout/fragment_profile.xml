@@ -54,7 +54,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="@dimen/horizontalMainPadding">
+            android:paddingHorizontal="@dimen/horizontalMainPadding"
+            >
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/profile_card_fragment_placeholder"
@@ -78,15 +79,17 @@
                 android:textColor="?attr/titleColor"
                 android:textSize="20sp" />
 
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/levelHorizontalPadding" />
+<!--            <com.google.android.material.divider.MaterialDivider-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="@dimen/levelHorizontalPadding" />-->
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/profile_settings_darkmode_label"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                style="@style/profilePageSettingsContainer">
 
                 <TextView
                     style="@style/profilePageSettingsLabel"
@@ -115,7 +118,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/profile_settings_notifications_label"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                style="@style/profilePageSettingsContainer">
 
                 <TextView
                     style="@style/profilePageSettingsLabel"
@@ -143,7 +147,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/profile_settings_aboutus_label"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                style="@style/profilePageSettingsContainer">
 
                 <TextView
                     style="@style/profilePageSettingsLabel"
@@ -171,7 +176,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/profile_settings_terms_label"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                style="@style/profilePageSettingsContainer">
 
                 <TextView
                     style="@style/profilePageSettingsLabel"
@@ -199,7 +205,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/profile_settings_appversion_label"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                style="@style/profilePageSettingsContainer">
 
                 <TextView
                     style="@style/profilePageSettingsLabel"
@@ -220,10 +227,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/levelHorizontalPadding" />
 
+            <!-- Sign in -->
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/profile_settings_signin_label"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                style="@style/profilePageSettingsContainer">
 
                 <TextView
                     android:id="@+id/profile_settings_signin_detail"
