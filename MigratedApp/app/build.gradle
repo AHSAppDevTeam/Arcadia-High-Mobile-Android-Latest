@@ -84,7 +84,8 @@ dependencies {
     // Zooming image view
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
-
+    // Material Design 3 :)
+    implementation 'com.google.android.material:material:1.6.1'
 
 
     // Don't update packages randomly unless you really need to
