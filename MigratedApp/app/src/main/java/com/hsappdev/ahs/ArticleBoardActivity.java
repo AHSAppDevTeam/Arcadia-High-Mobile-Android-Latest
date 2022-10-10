@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.hsappdev.ahs.db.ArticleRepository;
 import com.hsappdev.ahs.newDataTypes.ArticleDataType;
+import com.hsappdev.ahs.ui.BackNavigationActivity;
 import com.hsappdev.ahs.ui.reusable.recyclerview.AbstractDataRecyclerView;
 import com.hsappdev.ahs.viewModels.ArticleBoardViewModel;
 
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ArticleBoardActivity extends AppCompatActivity {
+public class ArticleBoardActivity extends BackNavigationActivity {
 
     private static final String TAG = "ArticleBoardActivity";
 

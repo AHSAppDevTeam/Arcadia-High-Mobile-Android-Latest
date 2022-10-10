@@ -9,8 +9,9 @@ import android.os.Parcelable;
 import android.util.Log;
 
 import com.hsappdev.ahs.newDataTypes.ArticleDataType;
+import com.hsappdev.ahs.ui.BackNavigationActivity;
 
-public class ArticleActivity extends AppCompatActivity {
+public class ArticleActivity extends BackNavigationActivity {
 
     private static final String TAG = "ArticleActivity";
 

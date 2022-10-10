@@ -6,16 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".ArticleBoardActivity">
 
-    <TextView
-        android:id="@+id/board_articles_title_bold"
-        style="@style/appDevTitleStyleBold"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="@dimen/horizontalMainPadding"
-        android:paddingVertical="@dimen/verticalMainPadding"
-        android:text="@string/article_boards_title_text_default"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/backNavigateButton"
+            android:layout_width="@dimen/cornerIconSize"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/headerPadding"
+            android:background="@drawable/icon_circle"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/actionBarItemBackground"
+            android:onClick="backNavigate"
+            android:src="@drawable/activity_navigation_back_arrow"
+            app:tint="?attr/titleColor" />
+        <TextView
+            android:id="@+id/board_articles_title_bold"
+            style="@style/appDevTitleStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/horizontalMainPadding"
+            android:paddingVertical="@dimen/verticalMainPadding"
+            android:text="@string/article_boards_title_text_default"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
