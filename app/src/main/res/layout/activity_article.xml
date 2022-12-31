@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ArticleActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/backNavigateButton"
+            android:layout_width="@dimen/cornerIconSize"
+            android:layout_height="@dimen/cornerIconSize"
+            android:layout_marginStart="@dimen/headerPadding"
+            android:background="@drawable/icon_circle"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/actionBarItemBackground"
+            android:onClick="backNavigate"
+            android:src="@drawable/activity_navigation_back_arrow"
+            app:tint="?attr/titleColor" />
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
