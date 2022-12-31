@@ -74,14 +74,18 @@ public class ScheduleRendererView extends LinearLayout {
         String dateText = scheduleDate.format(new DateTimeFormatterBuilder().appendPattern("MMMM d").toFormatter());
         String dayText = scheduleDate.format(new DateTimeFormatterBuilder().appendPattern("EEEE").toFormatter());
 
-
-        title.setText(currentScheduleData.getTitle());
-        day.setText(dayText);
-        date.setText(dateText);
+        if(currentScheduleData.getTitle() != null) {
+            title.setText(currentScheduleData.getTitle());
+            day.setText(dayText);
+            date.setText(dateText);
+        }
 
         this.addView(titleView);
     }
 
+    /**
+     * Renders the schedule blocks
+     */
     private void renderMain(){
         List<PeriodData> organizedData = currentScheduleData.getOrganizedData();
         for(int i = 0; i < organizedData.size(); i++){

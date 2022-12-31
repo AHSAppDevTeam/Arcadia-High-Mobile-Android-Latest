@@ -12,7 +12,17 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent=".1" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Passing"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <View
+        android:id="@+id/view"
         android:layout_width="2dp"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="@dimen/levelHorizontalPadding"

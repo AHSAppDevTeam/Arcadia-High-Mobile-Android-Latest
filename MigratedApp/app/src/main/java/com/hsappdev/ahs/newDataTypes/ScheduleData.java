@@ -35,7 +35,11 @@ public class ScheduleData {
         for(int i = 0; i < timestamps.size(); i++) {
             int j = i+1;
             if(j < timestamps.size()) {
+                if(i>=periodIDs.size()){
+                    return; // why return; instead of continue;? because we've reached the limit for number of labels for the timestamps
+                }
                 PeriodData periodData = new PeriodData(timestamps.get(i), timestamps.get(j), periodIDs.get(i));
+
                 organizedData.add(periodData);
             }
         }

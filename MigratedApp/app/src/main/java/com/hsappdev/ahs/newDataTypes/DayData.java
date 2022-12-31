@@ -39,6 +39,7 @@ public class DayData {
     }
 
     private void loadScheduleFromFirebase(Resources r) {
+
         DatabaseReference ref = FirebaseDatabase.getInstance(FirebaseApp.getInstance(DatabaseConstants.FIREBASE_REALTIME_DB)).getReference()
                 .child(r.getString(R.string.db_schedule_id))
                 .child(scheduleId);
