@@ -25,7 +25,6 @@ import java.util.Arrays;
 @Entity(tableName = ArticleDAO.TABLE_NAME)
 public class ArticleDataType extends DataType implements Parcelable {
 
-    private static final int MAX_BLURB_LENGTH = 200;
     public static final String ARTICLE_EXTRA_ID = "ARTICLE_EXTRA_ID";
 
     @ColumnInfo(name = "ID")
@@ -128,28 +127,6 @@ public class ArticleDataType extends DataType implements Parcelable {
         isNotification = in.readInt();
         isViewed = in.readInt();
         in.readParcelable(ClassLoader.getSystemClassLoader());
-    }
-
-    @Override
-    public void setDataToView(View view) {
-        TextView titleTextView = view.findViewById(R.id.board_title_text);
-        TextView boardTextView = view.findViewById(R.id.board_description_text);
-        ImageView imageView = view.findViewById(R.id.board_image);
-
-        titleTextView.setText(title);
-        ScreenUtil.setPlainHTMLStringToTextView(body.substring(0, Math.min(body.length(), MAX_BLURB_LENGTH)), boardTextView);
-
-        // performs checks for images
-        if(imageURLs.length > 0) {
-            ImageUtil.setImageToView(imageURLs[0], imageView);
-        }
-    }
-
-    @Override
-    public void handleOnClick(View view) {
-        Intent articleIntent = new Intent(view.getContext(), ArticleActivity.class);
-        articleIntent.putExtra(ARTICLE_EXTRA_ID, this);
-        view.getContext().startActivity(articleIntent);
     }
 
     // GETTERS AND SETTERS

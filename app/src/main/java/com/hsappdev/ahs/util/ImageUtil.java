@@ -10,6 +10,9 @@ import com.hsappdev.ahs.R;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
+/**
+ * Utility for any image loading
+ */
 public class ImageUtil {
     public static void setImageToView(String imageUrl, ImageView imageView){
 

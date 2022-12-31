@@ -21,6 +21,9 @@ import com.hsappdev.ahs.newDataTypes.ArticleDataType;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Stores articles for a <i>specific</i> board
+ */
 public class ArticleBoardViewModel extends ViewModel {
 
     private static final String TAG = "ArticleBoardViewModel";
@@ -29,7 +32,7 @@ public class ArticleBoardViewModel extends ViewModel {
     private ArrayList<String> articleIds;
 
     // functions as a "collector" (collects articles as they load)
-    private List<ArticleDataType> articleDataListCollector = new ArrayList<>();
+    private final List<ArticleDataType> articleDataListCollector = new ArrayList<>();
 
     private final MutableLiveData<List<ArticleDataType>> articleMutableLiveData = new MutableLiveData<>();
 

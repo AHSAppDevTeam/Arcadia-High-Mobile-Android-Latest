@@ -60,7 +60,7 @@ public class WeekData {
                 int dayNum = 0;
                 for(DataSnapshot ds : snapshot.child(r.getString(R.string.db_weeks_schedule_ids)).getChildren()) {
                     String scheduleId = ds.getValue(String.class);
-                    dayList.get(dayNum).setValue(new DayData(scheduleId, r));
+                    if(dayList.get(dayNum) != null) dayList.get(dayNum).setValue(new DayData(scheduleId, r));
                     dayNum++;
                 }
             }

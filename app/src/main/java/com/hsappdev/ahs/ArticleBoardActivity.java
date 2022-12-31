@@ -8,14 +8,20 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hsappdev.ahs.db.ArticleRepository;
 import com.hsappdev.ahs.newDataTypes.ArticleDataType;
 import com.hsappdev.ahs.ui.BackNavigationActivity;
 import com.hsappdev.ahs.ui.reusable.recyclerview.AbstractDataRecyclerView;
+import com.hsappdev.ahs.ui.reusable.recyclerview.DataTypeViewAdapter;
+import com.hsappdev.ahs.util.ImageUtil;
+import com.hsappdev.ahs.util.ScreenUtil;
 import com.hsappdev.ahs.viewModels.ArticleBoardViewModel;
 
 import java.util.ArrayList;
@@ -23,6 +29,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ArticleBoardActivity extends BackNavigationActivity {
+
+    public static final int MAX_BLURB_LENGTH = 200;
 
     private static final String TAG = "ArticleBoardActivity";
 
@@ -55,8 +63,34 @@ public class ArticleBoardActivity extends BackNavigationActivity {
 
         // recycler view
         // Recycler view stuff
-        AbstractDataRecyclerView<ArticleDataType> dataRecyclerViewAdapter = new AbstractDataRecyclerView<>();
-        dataRecyclerViewAdapter.setViewId(R.layout.bulletin_article_section);
+        AbstractDataRecyclerView<ArticleDataType> dataRecyclerViewAdapter =
+                new AbstractDataRecyclerView<>(R.layout.bulletin_article_section,
+                        new DataTypeViewAdapter<ArticleDataType>() {
+                            @Override
+                            public void setDataToView(ArticleDataType data, View itemView) {
+                                TextView titleTextView = itemView.findViewById(R.id.board_title_text);
+                                TextView boardTextView = itemView.findViewById(R.id.board_description_text);
+                                ImageView imageView = itemView.findViewById(R.id.board_image);
+
+                                Log.wtf(TAG, "wtf");
+
+                                titleTextView.setText(data.getTitle());
+                                ScreenUtil.setPlainHTMLStringToTextView(data.getBody().substring(0, Math.min(data.getBody().length(), MAX_BLURB_LENGTH)), boardTextView);
+
+                                // performs checks for images
+                                if (data.getImageURLs().length > 0) {
+                                    ImageUtil.setImageToView(data.getImageURLs()[0], imageView);
+                                }
+                            }
+
+                            @Override
+                            public void handleOnClick(ArticleDataType data, View view) {
+                                Intent articleIntent = new Intent(view.getContext(), ArticleActivity.class);
+                                articleIntent.putExtra(ArticleDataType.ARTICLE_EXTRA_ID, data);
+                                view.getContext().startActivity(articleIntent);
+                            }
+                        }
+                );
         RecyclerView recyclerView = findViewById(R.id.articleBoardRecyclerView);
 
         recyclerView.setAdapter(dataRecyclerViewAdapter);

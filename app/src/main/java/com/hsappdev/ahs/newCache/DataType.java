@@ -4,13 +4,16 @@ import android.view.View;
 
 import androidx.room.Ignore;
 
-public abstract class DataType implements Comparable<DataType>{
+
+public abstract class DataType implements Comparable<DataType> {
 
     /**
      * A unique string id for each data type
      */
     @Ignore
     public String dataId;
+
+
     /**
      * Hash of the contents inside this object (to check if contents are the same)
      */
@@ -32,17 +35,6 @@ public abstract class DataType implements Comparable<DataType>{
         this.dataId = dataId;
     }
 
-    // METHODS TO DISPLAY THE DATA
-
-//    /**
-//     * Resource id (int) for the view to be displayed when used in recycler view
-//     */
-//    public static int displayResourceViewId = 0;
-
-    /**
-     * Set data to the view, using a overridden method
-     */
-    public abstract void setDataToView(View view);
 
     // GETTERS AND SETTERS
 
@@ -70,14 +62,4 @@ public abstract class DataType implements Comparable<DataType>{
     public void setLoading(boolean loading) {
         isLoading = loading;
     }
-
-    public abstract void handleOnClick(View view);
-
-//    public static int getDisplayResourceViewId() {
-//        return displayResourceViewId;
-//    }
-//
-//    public static void setDisplayResourceViewId(int displayResourceViewId) {
-//        DataType.displayResourceViewId = displayResourceViewId;
-//    }
 }

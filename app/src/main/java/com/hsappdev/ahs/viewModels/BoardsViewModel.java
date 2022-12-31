@@ -22,6 +22,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Stores information about all the boards (group of articles, the sections on the homepage) <br>
+ * This is different from ArticleBoardViewModel
+ */
 public class BoardsViewModel extends ViewModel {
 
     private static final String TAG = "TestDataLoadingViewMode";

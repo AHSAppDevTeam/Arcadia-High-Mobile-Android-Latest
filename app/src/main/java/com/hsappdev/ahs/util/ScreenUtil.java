@@ -12,6 +12,9 @@ import androidx.core.text.HtmlCompat;
 
 import java.util.Locale;
 
+/**
+ * Utility for working with Views
+ */
 public class ScreenUtil {
     public static float px_to_sp(float px, Context context) {
         return px/context.getResources().getDisplayMetrics().scaledDensity;

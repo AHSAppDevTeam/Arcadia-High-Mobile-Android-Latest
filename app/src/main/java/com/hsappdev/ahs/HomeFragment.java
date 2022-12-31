@@ -1,5 +1,6 @@
 package com.hsappdev.ahs;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.hsappdev.ahs.newDataTypes.BoardDataType;
 import com.hsappdev.ahs.ui.reusable.recyclerview.AbstractDataRecyclerView;
+import com.hsappdev.ahs.ui.reusable.recyclerview.DataTypeViewAdapter;
 import com.hsappdev.ahs.util.Helper;
 import com.hsappdev.ahs.viewModels.BoardsViewModel;
 
@@ -67,8 +69,27 @@ public class HomeFragment extends Fragment {
 
     private void setupRecyclerView(View view) {
         // Recycler view stuff
-        AbstractDataRecyclerView<BoardDataType> dataRecyclerViewAdapter = new AbstractDataRecyclerView<>();
-        dataRecyclerViewAdapter.setViewId(R.layout.home_board_category_section);
+        AbstractDataRecyclerView<BoardDataType> dataRecyclerViewAdapter =
+                new AbstractDataRecyclerView<>(R.layout.home_board_category_section,
+                        new DataTypeViewAdapter<BoardDataType>() {
+                            @Override
+                            public void setDataToView(BoardDataType data, View itemView) {
+                                // extract the view elements
+                                TextView titleTextView = itemView.findViewById(R.id.board_title_text);
+
+                                titleTextView.setText(data.getTitle());
+                            }
+
+                            @Override
+                            public void handleOnClick(BoardDataType data, View view) {
+                                Intent intent = new Intent(view.getContext(), ArticleBoardActivity.class);
+                                intent.putExtra(ArticleBoardActivity.ARTICLE_BOARD_TITLE_DATA_KEY, data.getTitle());
+                                intent.putStringArrayListExtra(ArticleBoardActivity.ARTICLE_IDS_DATA_KEY, data.getArticleIds());
+
+                                view.getContext().startActivity(intent);
+                            }
+                        });
+//        dataRecyclerViewAdapter.setViewId(R.layout.home_board_category_section);
         RecyclerView recyclerView = view.findViewById(R.id.boardsRecyclerView);
 
         recyclerView.setAdapter(dataRecyclerViewAdapter);

@@ -10,6 +10,10 @@ import com.hsappdev.ahs.newCache.DataType;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Used with DiffUtil to sort/organize lists
+ * @param <T>
+ */
 public class DataDiffCallback<T extends DataType> extends DiffUtil.Callback {
     private final List<T> oldDataList;
     private final List<T> newDataList;

@@ -46,7 +46,7 @@ public class DayData {
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.getValue() == null){ return; }
+                if(!snapshot.exists()){ return; }
                 scheduleCollector.setIconURL(snapshot.child(r.getString(R.string.db_schedule_icon)).getValue(String.class));
                 scheduleCollector.setColor(snapshot.child(r.getString(R.string.db_schedule_color)).getValue(String.class));
                 scheduleCollector.setTitle(snapshot.child(r.getString(R.string.db_schedule_title)).getValue(String.class));

@@ -1,6 +1,9 @@
 package com.hsappdev.ahs.newCache;
 
 /**
+ *
+ * This is an interesting paragraph I wrote a while ago, it's no longer relevant.
+ *
  * Diagram of the cache system (its a data loading mechanism, PLS DONT CALL IT A CACHE ANY LONGER)
  *
  * abstract data obj <- a wrapper used to store "loading" info about a data class
