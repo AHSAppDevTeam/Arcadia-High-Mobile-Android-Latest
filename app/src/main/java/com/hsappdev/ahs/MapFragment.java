@@ -1,20 +1,26 @@
 package com.hsappdev.ahs;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
+import android.webkit.WebMessage;
+import android.webkit.WebMessagePort;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 public class MapFragment extends Fragment {
 
+    private static final String TAG = "MapFragment";
 
+    private WebMessagePort[] webMessagePorts;
 
     public MapFragment() {
         // Required empty public constructor
@@ -44,7 +50,24 @@ public class MapFragment extends Fragment {
             }
         });
 
-        // webView.loadUrl("https://map.ahs.app/map?quality=3&password="+getResources().getString(R.string.map_secret));
+        webView.loadUrl("https://map.ahs.app/map?quality=3");
+
+        webMessagePorts = webView.createWebMessageChannel();
+
+        for(WebMessagePort port : webMessagePorts) {
+            WebMessage passwordMessage = new WebMessage("{password:\"" + getResources().getString(R.string.map_secret) + "\"}");
+
+
+
+            port.setWebMessageCallback(new WebMessagePort.WebMessageCallback() {
+                @Override
+                public void onMessage(WebMessagePort port, WebMessage message) {
+                    Log.d(TAG, "i sent a message" + message.getData());
+                }
+            });
+
+            port.postMessage(passwordMessage);
+        }
 
 
 
