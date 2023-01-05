@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.TextClock;
 import android.widget.TextView;
@@ -83,13 +84,13 @@ public class ScheduleRendererView extends LinearLayout {
         // add timeline by using a linear layout divided by a ratio horizontally
         LinearLayout container = new LinearLayout(getContext());
 
-        LinearLayout scheduleTimelineView = new ScheduleTimelineView(getContext()); // the left side
+        ScheduleTimelineView scheduleTimelineView = new ScheduleTimelineView(getContext()); // the left side
         LinearLayout scheduleBlock = new LinearLayout(getContext()); // the right side
         scheduleBlock.setOrientation(LinearLayout.VERTICAL);
 
         // set layout params
-        LinearLayout.LayoutParams timelineParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, .1f);
-        LinearLayout.LayoutParams scheduleParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, .9f);
+        LinearLayout.LayoutParams timelineParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, .1f);
+        LinearLayout.LayoutParams scheduleParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, .9f);
 
 
         scheduleTimelineView.setLayoutParams(timelineParams);
@@ -100,8 +101,6 @@ public class ScheduleRendererView extends LinearLayout {
 
         addView(container);
 
-
-
         List<PeriodData> organizedData = currentScheduleData.getOrganizedData();
         for(int i = 0; i < organizedData.size(); i++){
             PeriodData period = organizedData.get(i);
@@ -111,7 +110,22 @@ public class ScheduleRendererView extends LinearLayout {
                             new PassingPeriodView(getContext(), period) : new SchedulePeriodView(getContext(), period);
             scheduleBlock.addView(periodView);
         }
+
+        scheduleBlock.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+
+            boolean hasBeenCalled = false;
+
+            @Override
+            public void onGlobalLayout() {
+                if(!hasBeenCalled) {
+                    hasBeenCalled = true;
+                    scheduleTimelineView.render(currentScheduleData.getEarliestTimeStamp(), currentScheduleData.getLatestTimeStamp(), scheduleBlock.getMeasuredHeight());
+                }
+            }
+        });
+
     }
+
 
     public void clearScheduleView() {
         this.removeAllViews();
