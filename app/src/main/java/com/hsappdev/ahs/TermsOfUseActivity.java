@@ -4,7 +4,7 @@ package com.hsappdev.ahs;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.hsappdev.ahs.ui.BackNavigationActivity;
+import com.hsappdev.ahs.ui.reusable.BackNavigationActivity;
 import com.hsappdev.ahs.util.ScreenUtil;
 
 public class TermsOfUseActivity extends BackNavigationActivity {

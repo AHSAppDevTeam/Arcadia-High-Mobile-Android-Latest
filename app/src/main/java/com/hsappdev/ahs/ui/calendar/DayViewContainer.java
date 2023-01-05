@@ -1,5 +1,8 @@
 package com.hsappdev.ahs.ui.calendar;
 
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 
@@ -52,8 +55,10 @@ public class DayViewContainer extends ViewContainer implements View.OnClickListe
         view.setVisibility(View.VISIBLE);
 
         // update with firebase data
-        dayData = calendarState.getSpecificDayDataValue(getWeekOfYear(), getDayOfWeek());
-        updateViewWithData(dayData);
+        this.dayData = calendarState.getSpecificDayDataValue(getWeekOfYear(), getDayOfWeek());
+        this.scheduleData = dayData.getSchedule().getValue();
+
+        if(scheduleData == null) return;
 
         if(calendarState.getSelectedDate() == null && calendarDay.getDate().atStartOfDay().equals(LocalDate.now().atStartOfDay())) {
             // automatically open the current day schedule
@@ -61,11 +66,14 @@ public class DayViewContainer extends ViewContainer implements View.OnClickListe
             scheduleRendererView.renderScheduleViewWithData(scheduleData, calendarDay.getDate());
         }
 
-        if(isSelected()) {
-            dateTextView.setText("NS");
-        } else {
-            dateTextView.setText("S");
-        }
+        toggleHighlight(isSelected());
+        renderView();
+
+    }
+
+    private void renderView() {
+        dateTextView.setText(String.format("%s", getScheduleDayOfMonth()));
+        dotsTextView.setText(scheduleData.getDotsString());
     }
 
     private boolean isWithinMonthRange(){
@@ -73,14 +81,40 @@ public class DayViewContainer extends ViewContainer implements View.OnClickListe
     }
 
     private boolean isSelected() {
-        return calendarState.getSelectedDate() == null || !calendarState.getSelectedDate().equals(calendarDay.getDate());
+        return !(calendarState.getSelectedDate() == null || !calendarState.getSelectedDate().equals(calendarDay.getDate()));
     }
 
-    private void updateViewWithData(DayData newDayData) {
-        this.dayData = newDayData;
-        this.scheduleData = dayData.getSchedule().getValue();
 
-        dotsTextView.setText(Integer.toString(scheduleData.getDots()));
+    public void toggleHighlight(Boolean highlight) {
+        int highlightedBackgroundColor = scheduleData != null ? scheduleData.getColorInt() : Color.BLUE;
+        int highlightedTextColor = Color.WHITE;
+
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = dateTextView.getContext().getTheme();
+
+        theme.resolveAttribute(com.google.android.material.R.attr.backgroundColor, typedValue, true);
+        int defaultBackgroundColor = typedValue.data;
+
+        theme.resolveAttribute(R.attr.titleColor, typedValue, true);
+        int defaultTextColor = typedValue.data;
+
+        // refactor later for dark theme
+        //theme.resolveAttribute(R.attr.mutedTitleColor, typedValue, true);
+        int defaultMutedTextColor = Color.GRAY;
+
+        if(isToday() || highlight) {
+            view.setBackgroundColor(highlightedBackgroundColor);
+            dateTextView.setTextColor(highlightedTextColor);
+            dotsTextView.setTextColor(highlightedTextColor);
+        } else {
+            view.setBackgroundColor(defaultBackgroundColor);
+            if(calendarDay.getOwner() == DayOwner.THIS_MONTH) {
+                dateTextView.setTextColor(defaultTextColor);
+            } else {
+                dateTextView.setTextColor(defaultMutedTextColor);
+            }
+            dotsTextView.setTextColor(highlightedBackgroundColor);
+        }
     }
 
     @Override
@@ -117,6 +151,24 @@ public class DayViewContainer extends ViewContainer implements View.OnClickListe
         return calendarDay.getDate().get(WeekFields.ISO.weekOfWeekBasedYear());
     }
 
+    private int getCurrentDayOfMonth() {
+        return LocalDate.now().getDayOfMonth();
+    }
+
+    private int getScheduleDayOfMonth() {
+        return calendarDay.getDay();
+    }
+
+    private boolean isToday() {
+        if(calendarDay.getOwner() == DayOwner.THIS_MONTH) {
+            if (calendarDay.getDay() == getCurrentDayOfMonth()) {
+                if (calendarDay.getDate().atStartOfDay().equals(LocalDate.now().atStartOfDay())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
 
 }

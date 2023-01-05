@@ -1,5 +1,7 @@
 package com.hsappdev.ahs.newDataTypes;
 
+import android.graphics.Color;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -116,5 +118,22 @@ public class ScheduleData {
 
     public void setOrganizedData(List<PeriodData> organizedData) {
         this.organizedData = organizedData;
+    }
+
+    public int getColorInt() {
+        if(this.color == null) return Color.LTGRAY;
+        return Color.parseColor(this.color);
+    }
+
+    public String getDotsString() {
+        if (dots > 0) {
+            StringBuilder out = new StringBuilder(dots);
+            for(int i = 0; i < dots; i++){
+                out.append("●");
+            }
+            return out.toString();
+        } else {
+            return "○";
+        }
     }
 }

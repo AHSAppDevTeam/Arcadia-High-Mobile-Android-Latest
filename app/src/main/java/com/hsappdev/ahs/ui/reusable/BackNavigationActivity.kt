@@ -1,4 +1,4 @@
-package com.hsappdev.ahs.ui
+package com.hsappdev.ahs.ui.reusable
 
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -8,6 +8,10 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.hsappdev.ahs.R
 
+/**
+ * This class automatically handles the "back button" <br?
+ * all activities that extend this class must set android:onClick="backNavigate" on the "back" button
+ */
 open class BackNavigationActivity : AppCompatActivity() {
 
     private val TAG = "BackNavigationActivity"

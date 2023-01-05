@@ -13,7 +13,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.hsappdev.ahs.db.DatabaseConstants
-import com.hsappdev.ahs.ui.BackNavigationActivity
+import com.hsappdev.ahs.ui.reusable.BackNavigationActivity
 import com.hsappdev.ahs.util.ScreenUtil
 
 

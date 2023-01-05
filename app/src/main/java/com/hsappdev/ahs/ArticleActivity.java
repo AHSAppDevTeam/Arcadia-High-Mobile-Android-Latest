@@ -1,15 +1,11 @@
 package com.hsappdev.ahs;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.util.Log;
 
 import com.hsappdev.ahs.newDataTypes.ArticleDataType;
-import com.hsappdev.ahs.ui.BackNavigationActivity;
+import com.hsappdev.ahs.ui.reusable.BackNavigationActivity;
 
 public class ArticleActivity extends BackNavigationActivity {
 

@@ -1,7 +1,5 @@
 package com.hsappdev.ahs;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -17,7 +15,7 @@ import android.widget.TextView;
 
 import com.hsappdev.ahs.db.ArticleRepository;
 import com.hsappdev.ahs.newDataTypes.ArticleDataType;
-import com.hsappdev.ahs.ui.BackNavigationActivity;
+import com.hsappdev.ahs.ui.reusable.BackNavigationActivity;
 import com.hsappdev.ahs.ui.reusable.recyclerview.AbstractDataRecyclerView;
 import com.hsappdev.ahs.ui.reusable.recyclerview.DataTypeViewAdapter;
 import com.hsappdev.ahs.util.ImageUtil;
@@ -25,7 +23,6 @@ import com.hsappdev.ahs.util.ScreenUtil;
 import com.hsappdev.ahs.viewModels.ArticleBoardViewModel;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ArticleBoardActivity extends BackNavigationActivity {
@@ -71,9 +68,7 @@ public class ArticleBoardActivity extends BackNavigationActivity {
                                 TextView titleTextView = itemView.findViewById(R.id.board_title_text);
                                 TextView boardTextView = itemView.findViewById(R.id.board_description_text);
                                 ImageView imageView = itemView.findViewById(R.id.board_image);
-
-                                Log.wtf(TAG, "wtf");
-
+                                
                                 titleTextView.setText(data.getTitle());
                                 ScreenUtil.setPlainHTMLStringToTextView(data.getBody().substring(0, Math.min(data.getBody().length(), MAX_BLURB_LENGTH)), boardTextView);
 
