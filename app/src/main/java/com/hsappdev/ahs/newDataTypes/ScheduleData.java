@@ -47,6 +47,20 @@ public class ScheduleData {
 
     // GETTERS AND SETTERS
 
+    public int getEarliestTimeStamp() {
+        if(!timestamps.isEmpty()){
+            return timestamps.get(0);
+        }
+        return 0;
+    }
+
+    public int getLatestTimeStamp() {
+        if(!timestamps.isEmpty()){
+            return timestamps.get(timestamps.size()-1);
+        }
+        return 0;
+    }
+
     public String getIconURL() {
         return iconURL;
     }

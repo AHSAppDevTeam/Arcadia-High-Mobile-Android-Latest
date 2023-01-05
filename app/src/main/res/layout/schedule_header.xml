@@ -4,11 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginHorizontal="@dimen/horizontalMainPadding">
+    android:paddingHorizontal="@dimen/horizontalMainPadding"
+    android:paddingBottom="7dp">
 
     <TextView
         android:id="@+id/schedule_header_day"
         style="@style/appDevTitleStyleBold"
+        android:textSize="18sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="?attr/titleColor"
@@ -22,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/sfprodisplay_regular"
-        android:textSize="22sp"
+        android:textSize="12sp"
         android:textColor="?titleColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +37,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/sfprodisplay_medium"
         android:textColor="@color/schedule_bright_blue"
-        android:textSize="15sp"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/schedule_header_date"

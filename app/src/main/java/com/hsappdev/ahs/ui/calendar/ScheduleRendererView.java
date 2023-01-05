@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextClock;
 import android.widget.TextView;
@@ -45,24 +46,15 @@ public class ScheduleRendererView extends LinearLayout {
         this.currentScheduleData = scheduleData;
         this.scheduleDate = scheduleDate;
 
-        // set padding
-        int p = 10;
-        this.setPadding(0, p, 0, p);
-
         this.clearScheduleView();
         if(scheduleData == null) return;
         Log.d(TAG, "render schedule");
-//        TextView title = new TextView(getContext());
-//        title.setText(scheduleData.getTitle() == null ? "Schedule" : scheduleData.getTitle());
-//        this.addView(title);
+
+        setOrientation(LinearLayout.VERTICAL);
 
         renderTitle();
         renderMain();
 
-//        SchedulePeriodView schedulePeriodView = new SchedulePeriodView(getContext());
-//        this.addView(schedulePeriodView);
-//        SchedulePeriodView schedulePeriodView1 = new SchedulePeriodView(getContext());
-//        this.addView(schedulePeriodView1);
     }
 
     private void renderTitle() {
@@ -87,6 +79,29 @@ public class ScheduleRendererView extends LinearLayout {
      * Renders the schedule blocks
      */
     private void renderMain(){
+
+        // add timeline by using a linear layout divided by a ratio horizontally
+        LinearLayout container = new LinearLayout(getContext());
+
+        LinearLayout scheduleTimelineView = new ScheduleTimelineView(getContext()); // the left side
+        LinearLayout scheduleBlock = new LinearLayout(getContext()); // the right side
+        scheduleBlock.setOrientation(LinearLayout.VERTICAL);
+
+        // set layout params
+        LinearLayout.LayoutParams timelineParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, .1f);
+        LinearLayout.LayoutParams scheduleParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, .9f);
+
+
+        scheduleTimelineView.setLayoutParams(timelineParams);
+        scheduleBlock.setLayoutParams(scheduleParams);
+
+        container.addView(scheduleTimelineView);
+        container.addView(scheduleBlock);
+
+        addView(container);
+
+
+
         List<PeriodData> organizedData = currentScheduleData.getOrganizedData();
         for(int i = 0; i < organizedData.size(); i++){
             PeriodData period = organizedData.get(i);
@@ -94,7 +109,7 @@ public class ScheduleRendererView extends LinearLayout {
             AbstractSchedulePeriodView periodView =
                     (period.getPeriodType() == PeriodData.PERIOD_TYPE.PASSING_PERIOD) ?
                             new PassingPeriodView(getContext(), period) : new SchedulePeriodView(getContext(), period);
-            this.addView(periodView);
+            scheduleBlock.addView(periodView);
         }
     }
 
