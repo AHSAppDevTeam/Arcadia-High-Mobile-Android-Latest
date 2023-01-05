@@ -20,6 +20,7 @@ public class ProfileFragment extends Fragment {
     private static final String TAG = "ProfileFragment";
 
     private View aboutUsButton;
+    private View termsButton;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -44,9 +45,14 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         aboutUsButton = view.findViewById(R.id.profile_settings_aboutus_label);
-        Log.d(TAG, "onCreateView: set onclick listeners" );
         aboutUsButton.setOnClickListener(aboutUsV -> {
             Intent intent = new Intent(aboutUsV.getContext(), AboutActivity.class);
+            if(getActivity() != null) getActivity().startActivity(intent);
+        });
+
+        termsButton = view.findViewById(R.id.profile_settings_terms_label);
+        termsButton.setOnClickListener(termsV -> {
+            Intent intent = new Intent(termsV.getContext(), TermsOfUseActivity.class);
             if(getActivity() != null) getActivity().startActivity(intent);
         });
 

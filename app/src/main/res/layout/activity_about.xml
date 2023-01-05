@@ -29,7 +29,7 @@
             app:tint="?attr/titleColor" />
 
         <TextView
-            android:id="@+id/about_us_title"
+            android:id="@+id/terms_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/appDevTitleStyleBold"

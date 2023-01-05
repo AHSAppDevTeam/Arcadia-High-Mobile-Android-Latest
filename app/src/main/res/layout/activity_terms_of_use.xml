@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TermsOfUseActivity">
+
+    <LinearLayout
+        android:id="@+id/terms_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/backNavigateButton"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="backNavigate"
+            android:layout_width="@dimen/cornerIconSize"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/headerPadding"
+            android:background="@drawable/icon_circle"
+            android:foreground="?attr/actionBarItemBackground"
+            android:src="@drawable/activity_navigation_back_arrow"
+            app:tint="?attr/titleColor" />
+
+        <TextView
+            android:id="@+id/terms_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/appDevTitleStyleBold"
+            android:textColor="@color/brickRed"
+            android:text="@string/profile_settings_terms_title"
+            android:padding="@dimen/headerPadding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/terms_header">
+
+        <TextView
+            android:id="@+id/terms_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/levelHorizontalPadding"/>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
