@@ -20,7 +20,7 @@
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/horizontalMainPadding"
+                android:layout_marginHorizontal="@dimen/levelHorizontalPadding"
                 android:layout_marginVertical="@dimen/verticalMainPadding"
                 android:orientation="vertical">
 
@@ -70,7 +70,10 @@
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/fragment_home_widgets" />
             <LinearLayout
                 android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
@@ -109,7 +112,6 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/boardsRecyclerView"
-                class="androidx.appcompat.app.AlertController$RecycleListView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"

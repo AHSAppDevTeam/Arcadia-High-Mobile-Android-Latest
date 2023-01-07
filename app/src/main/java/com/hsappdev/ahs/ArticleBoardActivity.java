@@ -68,7 +68,7 @@ public class ArticleBoardActivity extends BackNavigationActivity {
                                 TextView titleTextView = itemView.findViewById(R.id.board_title_text);
                                 TextView boardTextView = itemView.findViewById(R.id.board_description_text);
                                 ImageView imageView = itemView.findViewById(R.id.board_image);
-                                
+
                                 titleTextView.setText(data.getTitle());
                                 ScreenUtil.setPlainHTMLStringToTextView(data.getBody().substring(0, Math.min(data.getBody().length(), MAX_BLURB_LENGTH)), boardTextView);
 
