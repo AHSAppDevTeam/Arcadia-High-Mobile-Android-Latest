@@ -7,6 +7,7 @@
     tools:context=".ArticleActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -24,7 +25,43 @@
             android:onClick="backNavigate"
             android:src="@drawable/activity_navigation_back_arrow"
             app:tint="?attr/titleColor" />
+
+
+        <TextView
+            android:id="@+id/article_board_title_bold"
+            style="@style/appDevTitleStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/headerPadding"
+            android:paddingHorizontal="@dimen/levelHorizontalPadding"
+            android:paddingVertical="@dimen/verticalMainPadding"
+            android:text="@string/article_boards_title_text_articles"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/article_viewpager2_linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/article_board_viewpager2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+
 
 
 

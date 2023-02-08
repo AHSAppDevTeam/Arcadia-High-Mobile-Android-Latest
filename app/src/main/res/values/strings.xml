@@ -57,6 +57,7 @@
 
     <!-- article board -->
     <string name="article_boards_title_text_default">Opportunities</string>
+    <string name="article_boards_title_text_articles">Article</string>
 
     <!-- profile -->
     <string name="profileNavbarTitleBold">Your</string>
