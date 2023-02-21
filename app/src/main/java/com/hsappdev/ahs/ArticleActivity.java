@@ -3,6 +3,7 @@ package com.hsappdev.ahs;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
@@ -25,20 +26,31 @@ public class ArticleActivity extends BackNavigationActivity {
     private ViewPager2 articleViewPager2;
     private ArticleFragmentStateAdapter articleFragmentStateAdapter;
     private ArrayList<String> articleImageURLSArrayList;
+    private TextView articleTextView;
+    private TextView articleCategory;
+    private TextView articleTitle;
+    private TextView articleAuthor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article);
         articleImageURLSArrayList = new ArrayList<>();
-
+        articleTextView = findViewById(R.id.article_text_view);
         articleViewPager2 = findViewById(R.id.article_board_viewpager2);
-        TabLayout articleTabLayout = findViewById(R.id.article_tab_layout);
+        articleCategory = findViewById(R.id.article_board_title_bold);
+        articleTitle = findViewById(R.id.article_title);
+        articleAuthor = findViewById(R.id.article_author);
+
         Intent srcIntent = getIntent();
         articleData = srcIntent.getParcelableExtra(ArticleDataType.ARTICLE_EXTRA_ID);
 
         Log.d(TAG, articleData.toString());
 
+        articleTitle.setText(articleData.getTitle());
+        articleCategory.setText(articleData.getCategoryID());
+        articleTextView.setText(articleData.getBody());
+        articleAuthor.setText(articleData.getAuthor());
         articleImageURLSArrayList.addAll(Arrays.asList(articleData.getImageURLs()));
 
 
