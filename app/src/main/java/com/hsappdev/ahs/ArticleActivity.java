@@ -1,7 +1,9 @@
 package com.hsappdev.ahs;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -47,9 +49,9 @@ public class ArticleActivity extends BackNavigationActivity {
 
         Log.d(TAG, articleData.toString());
 
+        articleTextView.setText(Html.fromHtml(articleData.getBody(), Html.FROM_HTML_MODE_COMPACT));
         articleTitle.setText(articleData.getTitle());
         articleCategory.setText(articleData.getCategoryID());
-        articleTextView.setText(articleData.getBody());
         articleAuthor.setText(articleData.getAuthor());
         articleImageURLSArrayList.addAll(Arrays.asList(articleData.getImageURLs()));
 
