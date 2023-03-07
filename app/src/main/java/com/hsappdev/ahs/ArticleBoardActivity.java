@@ -42,6 +42,8 @@ public class ArticleBoardActivity extends BackNavigationActivity {
 
 
     @Override
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article_board);
@@ -104,6 +106,13 @@ public class ArticleBoardActivity extends BackNavigationActivity {
                 Log.d(TAG, String.format("List Size: %d", boardsList.size()));
                 ArticleRepository articleRepository = new ArticleRepository(getApplication());
                 articleRepository.addOrUpdate(boardsList.toArray(new ArticleDataType[0]));
+
+                articleRepository.getArticle("asdfadsf").observe(ArticleBoardActivity.this, new Observer<ArticleDataType>() {
+                    @Override
+                    public void onChanged(ArticleDataType articleDataType) {
+
+                    }
+                });
 
                 dataRecyclerViewAdapter.setDataList(boardsList);
             }

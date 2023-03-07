@@ -13,8 +13,9 @@ import com.hsappdev.ahs.ArticleImageFragment;
 
 import java.util.ArrayList;
 
+//Change into actual attribute
 public class ArticleFragmentStateAdapter extends FragmentStateAdapter {
-    private ArrayList<String> fragmentList = new ArrayList<>();
+    private ArrayList<String> fragmentList;
 
     public ArticleFragmentStateAdapter(@NonNull FragmentActivity fragmentActivity, ArrayList<String> fragmentList) {
         super(fragmentActivity);
@@ -26,7 +27,7 @@ public class ArticleFragmentStateAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         Fragment fragment = new ArticleImageFragment();
         Bundle args = new Bundle();
-        args.putStringArrayList(ArticleImageFragment.ARG_OBJECT, fragmentList);
+        args.putString(ArticleImageFragment.ARG_OBJECT, fragmentList.get(position));
         fragment.setArguments(args);
         return fragment;
     }

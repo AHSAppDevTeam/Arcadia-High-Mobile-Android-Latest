@@ -13,6 +13,7 @@ import jp.wasabeef.glide.transformations.BlurTransformation;
 /**
  * Utility for any image loading
  */
+
 public class ImageUtil {
     public static void setImageToView(String imageUrl, ImageView imageView){
 
@@ -24,7 +25,6 @@ public class ImageUtil {
                 .error(R.drawable.error_img)
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(imageView);
-
     }
 
     public static String getYoutubeThumbnail(String videoID){

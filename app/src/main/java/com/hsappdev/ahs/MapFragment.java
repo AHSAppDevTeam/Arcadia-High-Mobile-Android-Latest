@@ -55,7 +55,7 @@ public class MapFragment extends Fragment {
         webMessagePorts = webView.createWebMessageChannel();
 
         for(WebMessagePort port : webMessagePorts) {
-            WebMessage passwordMessage = new WebMessage("{password:\"" + getResources().getString(R.string.map_secret) + "\"}");
+            WebMessage passwordMessage = new WebMessage("{password:\"" /*+ getResources().getString(R.string.map_secret) + "\"}"*/);
 
 
 

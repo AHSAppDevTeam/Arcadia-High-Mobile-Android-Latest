@@ -15,6 +15,7 @@
     <!-- navigation -->
     <dimen name="cornerIconSize">48dp</dimen>
     <dimen name="headerPadding">10dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 
 </resources>

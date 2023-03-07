@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
+//Change to correct attribute (not string)
 public class ArticleActivity extends BackNavigationActivity {
 
     private static final String TAG = "ArticleActivity";
