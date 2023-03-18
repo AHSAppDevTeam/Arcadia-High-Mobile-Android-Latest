@@ -7,122 +7,105 @@
     tools:context=".ArticleActivity">
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/backNavigateButton"
+                    android:layout_width="@dimen/cornerIconSize"
+                    android:layout_height="@dimen/cornerIconSize"
+                    android:layout_marginStart="@dimen/headerPadding"
+                    android:background="@drawable/icon_circle"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/actionBarItemBackground"
+                    android:onClick="backNavigate"
+                    android:src="@drawable/activity_navigation_back_arrow"
+                    app:tint="?attr/titleColor" />
+
+
+                <TextView
+                    android:id="@+id/article_board_title_bold"
+                    style="@style/appDevTitleStyleBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:paddingHorizontal="@dimen/levelHorizontalPadding"
+                    android:paddingVertical="@dimen/verticalMainPadding"
+                    android:text="@string/article_boards_title_text_articles"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+
+                    />
+            </LinearLayout>
+
+
+
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/article_board_viewpager2"
+                android:layout_width="283dp"
+                android:layout_height="196dp"
+                android:layout_marginLeft="60dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/article_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sfprodisplay_heavy"
+                android:layout_marginLeft="140dp"
+                android:text="among us"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/article_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/sfprodisplay_light"
+                android:text="author"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/article_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="80dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/sfprodisplay_medium"
+                android:text="Article Text"
+                />
+
 
 
         </LinearLayout>
 
     </ScrollView>
-
-
-
-
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/backNavigateButton"
-            android:layout_width="@dimen/cornerIconSize"
-            android:layout_height="@dimen/cornerIconSize"
-            android:layout_marginStart="@dimen/headerPadding"
-            android:background="@drawable/icon_circle"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/actionBarItemBackground"
-            android:onClick="backNavigate"
-            android:src="@drawable/activity_navigation_back_arrow"
-            app:tint="?attr/titleColor" />
-
-
-        <TextView
-            android:id="@+id/article_board_title_bold"
-            style="@style/appDevTitleStyleBold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/headerPadding"
-            android:paddingHorizontal="@dimen/levelHorizontalPadding"
-            android:paddingVertical="@dimen/verticalMainPadding"
-            android:text="@string/article_boards_title_text_articles"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/article_viewpager2_linearlayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/article_board_viewpager2"
-            android:layout_width="283dp"
-            android:layout_height="196dp"
-            android:orientation="horizontal"
-            android:layout_marginLeft="60dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </LinearLayout>
-
-
-    <TextView
-        android:id="@+id/article_title"
-        android:textSize="20sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="among us"
-        android:fontFamily="@font/sfprodisplay_heavy"
-        app:layout_constraintBottom_toTopOf="@+id/article_text_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/article_viewpager2_linearlayout" />
-
-    <TextView
-        android:id="@+id/article_author"
-        android:text="author"
-        android:textSize="15dp"
-        android:layout_marginTop="3dp"
-        android:fontFamily="@font/sfprodisplay_light"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/article_title" />
-
-    <TextView
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:id="@+id/article_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:fontFamily="@font/sfprodisplay_medium"
-        android:text="Article Text"
-        app:layout_constraintTop_toBottomOf="@+id/article_viewpager2_linearlayout"
-        tools:layout_editor_absoluteX="0dp" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
