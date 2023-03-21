@@ -29,6 +29,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/notifcation_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="@dimen/horizontalMainPadding"
@@ -37,6 +38,7 @@
         android:foreground="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
+
 
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintDimensionRatio="1:1"

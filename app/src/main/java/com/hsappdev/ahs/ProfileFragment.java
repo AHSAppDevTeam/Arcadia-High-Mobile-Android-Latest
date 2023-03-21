@@ -9,18 +9,22 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment  {
 
     private static final String TAG = "ProfileFragment";
 
     private View aboutUsButton;
     private View termsButton;
+
+    private ImageView notifButton;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -35,8 +39,9 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,6 +58,12 @@ public class ProfileFragment extends Fragment {
         termsButton = view.findViewById(R.id.profile_settings_terms_label);
         termsButton.setOnClickListener(termsV -> {
             Intent intent = new Intent(termsV.getContext(), TermsOfUseActivity.class);
+            if(getActivity() != null) getActivity().startActivity(intent);
+        });
+
+        notifButton = view.findViewById(R.id.notifcation_button);
+        notifButton.setOnClickListener(notifV -> {
+            Intent intent = new Intent(notifV.getContext(), NotifActivity.class);
             if(getActivity() != null) getActivity().startActivity(intent);
         });
 
