@@ -97,16 +97,19 @@ public class ArticleBoardActivity extends BackNavigationActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
 
 
-        viewModel.getArticles().observe(this, new Observer<List<ArticleDataType>>() {
-            @Override
-            public void onChanged(List<ArticleDataType> boardsList) {
-                Log.d(TAG, String.format("List Size: %d", boardsList.size()));
-                ArticleRepository articleRepository = new ArticleRepository(getApplication());
-                articleRepository.addOrUpdate(boardsList.toArray(new ArticleDataType[0]));
-
-                dataRecyclerViewAdapter.setDataList(boardsList);
-            }
-        });
+        // I honestly don't know why i wrote this commented out code
+        // Why would I add article to the sqlite db randomly?
+        // Maybe this code was just for testing?
+//        viewModel.getArticles().observe(this, new Observer<List<ArticleDataType>>() {
+//            @Override
+//            public void onChanged(List<ArticleDataType> boardsList) {
+//                Log.d(TAG, String.format("List Size: %d", boardsList.size()));
+//                ArticleRepository articleRepository = new ArticleRepository(getApplication());
+//                articleRepository.addOrUpdate(boardsList.toArray(new ArticleDataType[0]));
+//
+//                dataRecyclerViewAdapter.setDataList(boardsList);
+//            }
+//        });
 
     }
 

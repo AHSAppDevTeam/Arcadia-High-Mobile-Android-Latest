@@ -85,6 +85,11 @@
     <string name="notification_rationale_text">Allow notifications?</string>
     <string name="notification_rationale_text_title">Notifications</string>
 
+    <!-- notif service -->
+    <string name="notifications_section_title"><b>Notifications</b></string>
+    <string name="notificationChannelID">ahsMobileNotificationChannelID</string>
+    <string name="notificationChannelName">AHS Mobile Notifications</string>
+
     <!-- about us page -->
     <string name="contacts_list"><![CDATA[<a href="mailto:articles@ahs.app">articles@ahs.app</a><br/><a href="mailto:dev@ahs.app">dev@ahs.app</a><br/><a href="mailto:editors@ahs.app">editors@ahs.app</a><br/><a href="mailto:bugs@ahs.app">bugs@ahs.app</a>]]></string>
 

@@ -17,6 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.hsappdev.ahs.R;
 import com.hsappdev.ahs.db.DatabaseConstants;
 import com.hsappdev.ahs.newDataTypes.ArticleDataType;
+import com.hsappdev.ahs.util.FirebaseUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,56 +52,14 @@ public class ArticleBoardViewModel extends ViewModel {
 
     private void startLoadingArticleData(Resources r) {
         for (String articleId : articleIds) {
-            DatabaseReference ref = FirebaseDatabase.getInstance(FirebaseApp.getInstance(DatabaseConstants.FIREBASE_REALTIME_DB))
-                    .getReference()
-                    .child("articles")
-                    .child(articleId);
-
-            ref.addValueEventListener(new ValueEventListener() {
+            FirebaseUtil.loadArticle(articleId, r, new FirebaseUtil.DataCallback<ArticleDataType>() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    // extract values and set
-                    Log.d(TAG, String.format("Article Id Print: %s", articleId));
+                public void dataLoaded(ArticleDataType article) {
+                    if(article != null) {
+                        articleDataListCollector.add(article);
 
-                    ArticleDataType article = new ArticleDataType(articleId);
-
-                    String author = snapshot.child(r.getString(R.string.db_articles_author)).getValue(String.class);
-                    String title = snapshot.child(r.getString(R.string.db_articles_title)).getValue(String.class);
-                    String body = snapshot.child(r.getString(R.string.db_articles_body)).getValue(String.class);
-                    String category = snapshot.child(r.getString(R.string.db_articles_categoryID)).getValue(String.class);
-                    ArrayList<String> imageURLs = new ArrayList<>();
-                    ArrayList<String> videoURLs = new ArrayList<>();
-                    for (DataSnapshot imageURL : snapshot.child(r.getString(R.string.db_articles_imageURLs)).getChildren()) {
-                        imageURLs.add(imageURL.getValue(String.class));
+                        articleMutableLiveData.setValue(new ArrayList<>(articleDataListCollector)); // must make new copy
                     }
-                    for (DataSnapshot videoURL : snapshot.child(r.getString(R.string.db_articles_videoURLs)).getChildren()) {
-                        videoURLs.add(videoURL.getValue(String.class));
-                    }
-
-                    Long extractedTimestamp = snapshot.child(r.getString(R.string.db_articles_timestamp)).getValue(long.class);
-
-                    long timestamp = (extractedTimestamp == null) ? 0 : extractedTimestamp;
-
-                    article.setArticleID(articleId);
-                    article.setAuthor(author);
-                    article.setTitle(title);
-                    article.setBody(body);
-                    article.setCategoryID(category);
-                    article.setImageURLs(imageURLs.toArray(new String[0]));
-                    article.setVideoURLs(videoURLs.toArray(new String[0]));
-                    article.setTimestamp(timestamp);
-
-                    articleDataListCollector.add(article);
-
-                    articleMutableLiveData.setValue(new ArrayList<>(articleDataListCollector)); // must make new copy
-
-                    Log.d(TAG, article.toString());
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
                 }
             });
 
