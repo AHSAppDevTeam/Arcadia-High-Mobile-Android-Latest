@@ -56,8 +56,10 @@
     <string name="home_default_month">January</string>
 
     <!-- article board -->
+    <string name="general_section">See more in the General Section</string>
     <string name="article_boards_title_text_default">Opportunities</string>
     <string name="article_boards_title_text_articles">Article</string>
+    <string name="article_title_string_holder">Article Title</string>
 
     <!-- profile -->
     <string name="profileNavbarTitleBold">Your</string>

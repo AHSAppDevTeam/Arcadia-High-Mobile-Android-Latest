@@ -101,6 +101,16 @@
                 android:text="Article Text"
                 />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/general_section" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/recommendSectionRecyclerView"/>
+
 
 
         </LinearLayout>
