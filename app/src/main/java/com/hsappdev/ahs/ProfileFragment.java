@@ -9,6 +9,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +24,10 @@ public class ProfileFragment extends Fragment {
 
     private View aboutUsButton;
     private View termsButton;
+
+    private View versionButton;
+
+    private ImageView notifButton;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -54,6 +61,46 @@ public class ProfileFragment extends Fragment {
         termsButton.setOnClickListener(termsV -> {
             Intent intent = new Intent(termsV.getContext(), TermsOfUseActivity.class);
             if(getActivity() != null) getActivity().startActivity(intent);
+        });
+
+
+        notifButton = view.findViewById(R.id.notifcation_button);
+        notifButton.setOnClickListener(notifV -> {
+            Intent intent = new Intent(notifV.getContext(), NotifActivity.class);
+            if(getActivity() != null) getActivity().startActivity(intent);
+        });
+
+        versionButton = view.findViewById(R.id.profile_settings_appversion_label);
+        versionButton.setOnClickListener(new View.OnClickListener() {
+            Toast lastToast = null;
+            int timesClicked = 0;
+            long lastClickTime = 0;
+            int timesToHit = 20;
+            @Override
+            public void onClick(View view) {
+                long timeNow = System.currentTimeMillis();
+                if(timeNow - lastClickTime  > 1000) {
+                    // timed out
+                    // reset clicks
+                    timesClicked = 1;
+                } else {
+                    timesClicked++;
+                }
+                lastClickTime = System.currentTimeMillis();
+                if(timesClicked > 5 && timesClicked < timesToHit) {
+                    if(lastToast != null) {
+                        lastToast.cancel();
+                    }
+                    lastToast = Toast.makeText(view.getContext(), "Hit it " + (timesToHit-timesClicked) + " more times!", Toast.LENGTH_SHORT);
+                    lastToast.show();
+                } else if (timesClicked >= timesToHit) {
+                    if(lastToast != null) {
+                        lastToast.cancel();
+                    }
+                    lastToast = Toast.makeText(view.getContext(), "Hi there! ", Toast.LENGTH_LONG);
+                    lastToast.show();
+                }
+            }
         });
 
         return view;
