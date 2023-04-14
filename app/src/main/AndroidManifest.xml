@@ -13,23 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MigratedApp">
         <activity
-            android:name=".NotifActivityAdapter"
+            android:name=".NotifActivity"
             android:exported="false" />
-        <activity
-            android:name=".ImageViewerActivity"
-            android:exported="false"
-            android:label="@string/title_activity_image_viewer"
-            android:theme="@style/Theme.MigratedApp.NoActionBar">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".TermsOfUseActivity"
             android:exported="false">
@@ -39,12 +25,6 @@
         </activity>
         <activity
             android:name=".AboutActivity"
-            android:exported="false" />
-        <activity
-            android:name=".nfcTest.NfcTestActivity"
-            android:exported="false" />
-        <activity
-            android:name=".NotifActivity"
             android:exported="false" />
 
         <service

@@ -6,7 +6,7 @@ buildscript {
 
     repositories {
         google()  // Google's Maven repository
-        maven { url "https://www.jitpack.io" } // put this before mavenCentral()
+        maven { url 'https://mvnrepository.com/artifact/com.github.gundy/semver4j'}
         mavenCentral()
     }
 
