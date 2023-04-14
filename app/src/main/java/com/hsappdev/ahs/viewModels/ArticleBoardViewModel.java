@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.hsappdev.ahs.R;
+import com.hsappdev.ahs.db.ArticleRepository;
 import com.hsappdev.ahs.db.DatabaseConstants;
 import com.hsappdev.ahs.newDataTypes.ArticleDataType;
 
@@ -50,6 +51,8 @@ public class ArticleBoardViewModel extends ViewModel {
     }
 
     private void startLoadingArticleData(Resources r) {
+
+
         for (String articleId : articleIds) {
             DatabaseReference ref = FirebaseDatabase.getInstance(FirebaseApp.getInstance(DatabaseConstants.FIREBASE_REALTIME_DB))
                     .getReference()

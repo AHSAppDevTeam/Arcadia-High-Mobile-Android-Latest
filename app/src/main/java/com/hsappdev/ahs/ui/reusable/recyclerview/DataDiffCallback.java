@@ -35,11 +35,17 @@ public class DataDiffCallback<T extends DataType> extends DiffUtil.Callback {
 
     @Override
     public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
+        if(oldDataList.get(oldItemPosition).getDataId() == null || newDataList.get(newItemPosition).getDataId() == null) {
+            return true;
+        }
         return oldDataList.get(oldItemPosition).getDataId().equals(newDataList.get(newItemPosition).getDataId());
     }
 
     @Override
     public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
+        if(oldDataList.get(oldItemPosition).getDataHash() == null || newDataList.get(newItemPosition).getDataHash() == null) {
+            return true;
+        }
         return oldDataList.get(oldItemPosition).getDataHash().equals(newDataList.get(newItemPosition).getDataHash());
     }
 

@@ -26,12 +26,6 @@ public class NotifActivityAdapter extends RecyclerView.Adapter<NotifActivityAdap
         // this.data = data;
         this.data = new ArrayList<>();
         ArticleDataType a = new ArticleDataType();
-        for (int i = 0; i < 10; i++) {
-            a.setTitle("hi, there" + i);
-            a.setCategoryDisplayName("category " + i);
-            this.data.add(a);
-        }
-
     }
 
     @NonNull
@@ -45,6 +39,7 @@ public class NotifActivityAdapter extends RecyclerView.Adapter<NotifActivityAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         ArticleDataType article = data.get(position);
+
         String topic = article.getCategoryDisplayName();
         holder.topic.setText(topic);
 

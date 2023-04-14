@@ -99,6 +99,7 @@ public class ArticleBoardActivity extends BackNavigationActivity {
                 layoutManager.getOrientation());
         recyclerView.addItemDecoration(dividerItemDecoration);
 
+        ArticleRepository ar = new ArticleRepository(this.getApplication());
 
         viewModel.getArticles().observe(this, new Observer<List<ArticleDataType>>() {
             @Override
@@ -107,7 +108,7 @@ public class ArticleBoardActivity extends BackNavigationActivity {
                 ArticleRepository articleRepository = new ArticleRepository(getApplication());
                 articleRepository.addOrUpdate(boardsList.toArray(new ArticleDataType[0]));
 //                articleRepository.getAllArticles();
-                articleRepository.deleteAll();
+                // articleRepository.deleteAll();
 
 //                articleRepository.getArticle("asdfadsf").observe(ArticleBoardActivity.this, new Observer<ArticleDataType>() {
 //                    @Override

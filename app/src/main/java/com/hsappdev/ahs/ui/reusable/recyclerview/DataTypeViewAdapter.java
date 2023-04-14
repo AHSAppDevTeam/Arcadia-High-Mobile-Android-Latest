@@ -15,7 +15,7 @@ public interface DataTypeViewAdapter<T extends DataType> {
     void setDataToView(T data, View itemView);
 
     /**
-     * Handles click
+     * Method is called when the thing is clicked
      * @param data
      * @param itemView
      */
