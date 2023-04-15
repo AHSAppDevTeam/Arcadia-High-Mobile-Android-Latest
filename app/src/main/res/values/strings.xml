@@ -23,6 +23,7 @@
     <string name="db_articles_timestamp">timestamp</string>
     <string name="db_articles_title">title</string>
     <string name="db_articles_views">views</string>
+    <string name="db_articles_color">color</string>
 
 
     <!-- db stuff (weeks) -->

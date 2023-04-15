@@ -1,6 +1,7 @@
 package com.hsappdev.ahs.viewModels;
 
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -70,6 +71,7 @@ public class ArticleBoardViewModel extends ViewModel {
                     String author = snapshot.child(r.getString(R.string.db_articles_author)).getValue(String.class);
                     String title = snapshot.child(r.getString(R.string.db_articles_title)).getValue(String.class);
                     String body = snapshot.child(r.getString(R.string.db_articles_body)).getValue(String.class);
+                    String color = snapshot.child(r.getString(R.string.db_articles_color)).getValue(String.class);
                     String category = snapshot.child(r.getString(R.string.db_articles_categoryID)).getValue(String.class);
                     ArrayList<String> imageURLs = new ArrayList<>();
                     ArrayList<String> videoURLs = new ArrayList<>();
@@ -92,6 +94,7 @@ public class ArticleBoardViewModel extends ViewModel {
                     article.setImageURLs(imageURLs.toArray(new String[0]));
                     article.setVideoURLs(videoURLs.toArray(new String[0]));
                     article.setTimestamp(timestamp);
+                    article.setCategoryDisplayColor(Color.parseColor(color));
 
                     articleDataListCollector.add(article);
 
