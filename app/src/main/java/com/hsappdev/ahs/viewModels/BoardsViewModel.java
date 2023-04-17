@@ -1,5 +1,6 @@
 package com.hsappdev.ahs.viewModels;
 
+import android.graphics.Color;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -56,6 +57,8 @@ public class BoardsViewModel extends ViewModel {
                     String title = boardSnapshot.child("title").getValue(String.class);
                     long editTimestamp = boardSnapshot.child("editTimestamp").getValue(Long.class);
                     int sort = boardSnapshot.child("sort").getValue(Integer.class);
+                    String color = boardSnapshot.child("color").getValue(String.class);
+
 
                     if(sort == -1) {
                         continue;
@@ -71,6 +74,8 @@ public class BoardsViewModel extends ViewModel {
                     }
 
                     BoardDataType boardDataType = new BoardDataType(boardSnapshot.getKey(), articleIds, editTimestamp, sort, title);
+                    boardDataType.setColor(Color.parseColor(color));
+
                     boardsList.add(boardDataType);
                 }
 

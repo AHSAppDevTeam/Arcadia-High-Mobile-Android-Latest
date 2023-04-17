@@ -83,7 +83,7 @@ public class HomeFragment extends Fragment {
                             @Override
                             public void handleOnClick(BoardDataType data, View view) {
                                 Intent intent = new Intent(view.getContext(), ArticleBoardActivity.class);
-                                intent.putExtra(ArticleBoardActivity.ARTICLE_BOARD_TITLE_DATA_KEY, data.getTitle());
+                                intent.putExtra(ArticleBoardActivity.ARTICLE_BOARD_DATA_KEY, data);
                                 intent.putStringArrayListExtra(ArticleBoardActivity.ARTICLE_IDS_DATA_KEY, data.getArticleIds());
 
                                 view.getContext().startActivity(intent);

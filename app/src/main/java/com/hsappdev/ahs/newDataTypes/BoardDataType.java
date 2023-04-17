@@ -1,11 +1,16 @@
 package com.hsappdev.ahs.newDataTypes;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.ColorInt;
+
 import com.hsappdev.ahs.newCache.DataType;
 import com.hsappdev.ahs.util.ScreenUtil;
 
 import java.util.ArrayList;
 
-public class BoardDataType extends DataType {
+public class BoardDataType extends DataType implements Parcelable {
     private ArrayList<String> articleIds;
 
     private long editTimestamp;
@@ -13,6 +18,16 @@ public class BoardDataType extends DataType {
     private int sort;
 
     private String title;
+
+    @ColorInt
+    private int color;
+
+    protected BoardDataType(Parcel in) {
+        title = in.readString();
+        sort = in.readInt();
+        color = in.readInt();
+        in.readParcelable(ClassLoader.getSystemClassLoader());
+    }
 
     public BoardDataType(String dataID, ArrayList<String> articleIds, long editTimestamp, int sort, String title) {
         super(dataID);
@@ -43,6 +58,18 @@ public class BoardDataType extends DataType {
 //
 //
 //    }
+
+    public static final Creator<BoardDataType> CREATOR = new Creator<BoardDataType>() {
+        @Override
+        public BoardDataType createFromParcel(Parcel in) {
+            return new BoardDataType(in);
+        }
+
+        @Override
+        public BoardDataType[] newArray(int size) {
+            return new BoardDataType[size];
+        }
+    };
 
     @Override
     public int compareTo(DataType o) {
@@ -79,5 +106,40 @@ public class BoardDataType extends DataType {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public @ColorInt int getColor() {
+        return color;
+    }
+
+    public void setColor(@ColorInt int color) {
+        this.color = color;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(title);
+        parcel.writeInt(sort);
+        parcel.writeInt(color);
+
+    }
+
+    @Override
+    public String toString() {
+        return "BoardDataType{" +
+                "articleIds=" + articleIds +
+                ", editTimestamp=" + editTimestamp +
+                ", sort=" + sort +
+                ", title='" + title + '\'' +
+                ", color=" + color +
+                ", dataId='" + dataId + '\'' +
+                ", dataHash='" + dataHash + '\'' +
+                ", isLoading=" + isLoading +
+                '}';
     }
 }

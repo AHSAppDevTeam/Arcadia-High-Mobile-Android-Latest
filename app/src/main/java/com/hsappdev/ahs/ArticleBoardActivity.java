@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.hsappdev.ahs.db.ArticleRepository;
 import com.hsappdev.ahs.newDataTypes.ArticleDataType;
+import com.hsappdev.ahs.newDataTypes.BoardDataType;
 import com.hsappdev.ahs.ui.reusable.BackNavigationActivity;
 import com.hsappdev.ahs.ui.reusable.recyclerview.AbstractDataRecyclerView;
 import com.hsappdev.ahs.ui.reusable.recyclerview.DataTypeViewAdapter;
@@ -32,8 +33,8 @@ public class ArticleBoardActivity extends BackNavigationActivity {
 
     private static final String TAG = "ArticleBoardActivity";
 
-    public static final String ARTICLE_BOARD_TITLE_DATA_KEY = "ARTICLE_TITLE_ID";
-    private String title;
+    public static final String ARTICLE_BOARD_DATA_KEY = "ARTICLE_TITLE_ID";
+    private BoardDataType board;
 
     public static final String ARTICLE_IDS_DATA_KEY = "ARTICLE_IDS";
     private ArrayList<String> articleIds;
@@ -59,7 +60,7 @@ public class ArticleBoardActivity extends BackNavigationActivity {
     private void setupUI() {
         // title
         TextView titleText = findViewById(R.id.board_articles_title_bold);
-        titleText.setText(title);
+        titleText.setText(board.getTitle());
 
         // recycler view
         // Recycler view stuff
@@ -105,6 +106,9 @@ public class ArticleBoardActivity extends BackNavigationActivity {
             @Override
             public void onChanged(List<ArticleDataType> boardsList) {
                 Log.d(TAG, String.format("List Size: %d", boardsList.size()));
+                for (ArticleDataType a : boardsList) {
+                    a.setCategoryDisplayColor(board.getColor());
+                }
                 ArticleRepository articleRepository = new ArticleRepository(getApplication());
                 articleRepository.addOrUpdate(boardsList.toArray(new ArticleDataType[0]));
 //                articleRepository.getAllArticles();
@@ -126,7 +130,7 @@ public class ArticleBoardActivity extends BackNavigationActivity {
 
     private void extractDataFromIntent() {
         if(getIntent() != null) {
-            title = getIntent().getStringExtra(ARTICLE_BOARD_TITLE_DATA_KEY);
+            board = getIntent().getParcelableExtra(ARTICLE_BOARD_DATA_KEY);
             articleIds = getIntent().getStringArrayListExtra(ARTICLE_IDS_DATA_KEY);
 
 //            // TODO: override here
