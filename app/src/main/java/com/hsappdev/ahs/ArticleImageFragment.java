@@ -30,9 +30,9 @@ public class ArticleImageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         Bundle args = getArguments();
 
-        viewPager2 = view.findViewById(R.id.article_board_viewpager2);
-        ((TextView) view.findViewById(R.id.article_board_imageView))
-                .setText(String.valueOf(args.getStringArrayList(ARG_OBJECT)));
+//        viewPager2 = view.findViewById(R.id.article_board_viewpager2);
+//        ((TextView) view.findViewById(R.id.article_board_imageView))
+//                .setText(String.valueOf(args.getStringArrayList(ARG_OBJECT)));
     }
 
 

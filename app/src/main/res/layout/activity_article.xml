@@ -72,15 +72,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:textColor="@color/black"
+                android:layout_gravity="center"
                 android:id="@+id/article_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sfprodisplay_heavy"
-                android:layout_marginLeft="140dp"
                 android:text="among us"
                 android:textSize="20sp" />
 
             <TextView
+                android:layout_gravity="center"
                 android:layout_weight="1"
                 android:id="@+id/article_author"
                 android:layout_width="wrap_content"
@@ -91,17 +93,19 @@
                 android:textSize="15dp" />
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/article_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
                 android:fontFamily="@font/sfprodisplay_medium"
                 android:text="Article Text"
                 />
 
             <TextView
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/general_section" />

@@ -42,7 +42,7 @@ public class ArticleSectionAdapter extends RecyclerView.Adapter<ArticleSectionAd
     @Override
     public void onBindViewHolder(@NonNull ArticleSectionAdapter.ViewHolder holder, int position) {
         holder.articleTitleBottom.setText(articleSuggestions.get(position).getTitle());
-        holder.articleImageBottom.setImageState(Glide.with(context).load(articleSuggestions.get(position).getImageURLs()).fitCenter().diskCacheStrategy(DiskCacheStrategy.ALL).into(amongus));
+        Glide.with(context).load(articleSuggestions.get(position).getImageURLs()).fitCenter().diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.articleImageBottom);
 
     }
 

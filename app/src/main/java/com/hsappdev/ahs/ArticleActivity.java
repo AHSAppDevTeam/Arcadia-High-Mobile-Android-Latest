@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.hsappdev.ahs.newDataTypes.ArticleDataType;
@@ -27,7 +29,7 @@ public class ArticleActivity extends BackNavigationActivity {
     private ArticleDataType articleData;
     private ViewPager2 articleViewPager2;
     private ArticleFragmentStateAdapter articleFragmentStateAdapter;
-    private ArrayList<String> articleImageURLSArrayList;
+    private ArrayList<Glide> articleImageURLSArrayList;
     private TextView articleTextView;
     private TextView articleCategory;
     private TextView articleTitle;
@@ -53,7 +55,8 @@ public class ArticleActivity extends BackNavigationActivity {
         articleTitle.setText(articleData.getTitle());
         articleCategory.setText(articleData.getCategoryID());
         articleAuthor.setText(articleData.getAuthor());
-        articleImageURLSArrayList.addAll(Arrays.asList(articleData.getImageURLs()));
+//        articleImageURLSArrayList.addAll(Glide.with(this).load(articleData.getImageURLs().into()));
+//        articleImageURLSArrayList.addAll(Arrays.asList(articleData.getImageURLs()));
 
 
 

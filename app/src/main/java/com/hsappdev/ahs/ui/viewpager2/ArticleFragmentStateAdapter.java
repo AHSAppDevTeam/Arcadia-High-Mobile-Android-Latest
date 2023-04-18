@@ -9,14 +9,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.bumptech.glide.Glide;
 import com.hsappdev.ahs.ArticleImageFragment;
 
 import java.util.ArrayList;
 
 public class ArticleFragmentStateAdapter extends FragmentStateAdapter {
-    private ArrayList<String> fragmentList = new ArrayList<>();
+    private ArrayList<Glide> fragmentList = new ArrayList<>();
 
-    public ArticleFragmentStateAdapter(@NonNull FragmentActivity fragmentActivity, ArrayList<String> fragmentList) {
+    public ArticleFragmentStateAdapter(@NonNull FragmentActivity fragmentActivity, ArrayList<Glide> fragmentList) {
         super(fragmentActivity);
         this.fragmentList = fragmentList;
     }
@@ -26,7 +27,8 @@ public class ArticleFragmentStateAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         Fragment fragment = new ArticleImageFragment();
         Bundle args = new Bundle();
-        args.putStringArrayList(ArticleImageFragment.ARG_OBJECT, fragmentList);
+//        args.putStringArrayList(ArticleImageFragment.ARG_OBJECT, fragmentList);
+
         fragment.setArguments(args);
         return fragment;
     }
