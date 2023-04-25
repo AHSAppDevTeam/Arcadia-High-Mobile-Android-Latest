@@ -1,39 +1,46 @@
 package com.hsappdev.ahs;
 
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager2.widget.ViewPager2;
-
-import com.hsappdev.ahs.ui.viewpager2.ArticleFragmentStateAdapter;
+import com.bumptech.glide.Glide;
 
 public class ArticleImageFragment extends Fragment {
-    ArticleFragmentStateAdapter articleFragmentStateAdapter;
+    private static final String ARG_IMAGE_URL = "imageUrl";
 
-    ViewPager2 viewPager2;
-    public static final String ARG_OBJECT = "object";
+    private String imageUrl;
 
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.article_image, container, false);
-    }
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        Bundle args = getArguments();
-
-//        viewPager2 = view.findViewById(R.id.article_board_viewpager2);
-//        ((TextView) view.findViewById(R.id.article_board_imageView))
-//                .setText(String.valueOf(args.getStringArrayList(ARG_OBJECT)));
+    public static ArticleImageFragment newInstance(String param1) {
+        ArticleImageFragment fragment = new ArticleImageFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_IMAGE_URL, fragment.imageUrl);
+        fragment.setArguments(args);
+        return fragment;
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null)
+            imageUrl = getArguments().getString(ARG_IMAGE_URL);
 
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_article_image, container, false);
+        ImageView imageView = view.findViewById(R.id.article_image_view);
+        Glide.with(this)
+                .load(imageUrl)
+                .into(imageView);
+        return view;
+    }
 }

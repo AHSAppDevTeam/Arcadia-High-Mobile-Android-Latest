@@ -29,7 +29,7 @@ public class ArticleActivity extends BackNavigationActivity {
     private ArticleDataType articleData;
     private ViewPager2 articleViewPager2;
     private ArticleFragmentStateAdapter articleFragmentStateAdapter;
-    private ArrayList<Glide> articleImageURLSArrayList;
+    private ArrayList<String> articleImageURLSArrayList;
     private TextView articleTextView;
     private TextView articleCategory;
     private TextView articleTitle;
@@ -56,14 +56,11 @@ public class ArticleActivity extends BackNavigationActivity {
         articleCategory.setText(articleData.getCategoryID());
         articleAuthor.setText(articleData.getAuthor());
 //        articleImageURLSArrayList.addAll(Glide.with(this).load(articleData.getImageURLs().into()));
-//        articleImageURLSArrayList.addAll(Arrays.asList(articleData.getImageURLs()));
-
-
+        articleImageURLSArrayList.addAll(Arrays.asList(articleData.getImageURLs()));
+        articleFragmentStateAdapter = new ArticleFragmentStateAdapter(this, articleImageURLSArrayList);
+        articleViewPager2.setAdapter(articleFragmentStateAdapter);
 
         //make sure that the new fragment passed is basically with the text of the image url
-        articleFragmentStateAdapter = new ArticleFragmentStateAdapter(this, articleImageURLSArrayList);
-
-        articleViewPager2.setAdapter(articleFragmentStateAdapter);
 
 
 
