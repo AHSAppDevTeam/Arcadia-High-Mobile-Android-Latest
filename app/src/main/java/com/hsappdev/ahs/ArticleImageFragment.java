@@ -14,13 +14,13 @@ import com.bumptech.glide.Glide;
 public class ArticleImageFragment extends Fragment {
     private static final String ARG_IMAGE_URL = "imageUrl";
 
-    private String imageUrl;
+    private static String imageUrl;
 
 
     public static ArticleImageFragment newInstance(String param1) {
         ArticleImageFragment fragment = new ArticleImageFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_IMAGE_URL, fragment.imageUrl);
+        args.putString(ARG_IMAGE_URL, imageUrl);
         fragment.setArguments(args);
         return fragment;
     }
