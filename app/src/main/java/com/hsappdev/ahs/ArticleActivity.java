@@ -55,12 +55,12 @@ public class ArticleActivity extends BackNavigationActivity {
         articleTitle.setText(articleData.getTitle());
         articleCategory.setText(articleData.getCategoryID());
         articleAuthor.setText(articleData.getAuthor());
-//        articleImageURLSArrayList.addAll(Glide.with(this).load(articleData.getImageURLs().into()));
         articleImageURLSArrayList.addAll(Arrays.asList(articleData.getImageURLs()));
         articleFragmentStateAdapter = new ArticleFragmentStateAdapter(this, articleImageURLSArrayList);
         articleViewPager2.setAdapter(articleFragmentStateAdapter);
 
-        //make sure that the new fragment passed is basically with the text of the image url
+
+
 
 
 

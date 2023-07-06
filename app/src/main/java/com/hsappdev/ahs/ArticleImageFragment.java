@@ -1,15 +1,19 @@
 package com.hsappdev.ahs;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.util.LogTime;
+import com.hsappdev.ahs.newDataTypes.ArticleDataType;
 
 public class ArticleImageFragment extends Fragment {
     private static final String ARG_IMAGE_URL = "imageUrl";
@@ -20,7 +24,8 @@ public class ArticleImageFragment extends Fragment {
     public static ArticleImageFragment newInstance(String param1) {
         ArticleImageFragment fragment = new ArticleImageFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_IMAGE_URL, imageUrl);
+        imageUrl = param1;
+        args.putString(ARG_IMAGE_URL, param1);
         fragment.setArguments(args);
         return fragment;
     }
